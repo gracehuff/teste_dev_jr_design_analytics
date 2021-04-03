@@ -1,12 +1,22 @@
 let containerWithIcons = document.getElementById("divResourceLinks")
 containerWithIcons.classList.add("col-lg-6")
 let containerDellEmc = document.getElementById('divEnterpriseProductLinks')
+containerDellEmc.style.backgroundColor = '#f4f4f4'
+containerDellEmc.classList.remove('mb-6')
 containerDellEmc.classList.add("col-lg-6")
+let titulo = document.getElementsByClassName("my-5")
+titulo[0].remove()
+
+let toStyle = containerDellEmc.querySelector(".col-md-6")
+toStyle.style.paddingTop = '40px'
+
+
 
 let divForTwo = document.createElement("div")
 containerWithIcons.parentElement.insertBefore(divForTwo, containerWithIcons)
 
 let itensEmc = containerDellEmc.querySelectorAll(".container > div >div ");
+
 
 itensEmc.forEach(it => it.classList.add("col-md-12"))
 
@@ -15,6 +25,7 @@ divForTwo.appendChild(containerDellEmc)
 divForTwo.classList.add("row")
 
 let container = containerWithIcons.firstElementChild
+
 
 let containerRow = containerWithIcons.querySelector(".row")
 let containerRow2 = containerRow.cloneNode()
@@ -37,3 +48,4 @@ containerRow.remove()
     containerRow2.appendChild(itens34[1])
     container.appendChild(containerRow)
     container.appendChild(containerRow2)
+

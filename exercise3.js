@@ -1,40 +1,51 @@
-let divs = document.querySelectorAll("div.anavmfe_accordionitem_name")
-let divAdjascente = document.querySelector("#cat-primary")
+let containerWithIcons = document.getElementById("divResourceLinks")
+containerWithIcons.classList.add("col-lg-6")
+let containerDellEmc = document.getElementById('divEnterpriseProductLinks')
+containerDellEmc.style.backgroundColor = '#f4f4f4'
+containerDellEmc.classList.remove('mb-6')
+containerDellEmc.classList.add("col-lg-6")
+let titulo = document.getElementsByClassName("my-5")
+titulo[0].remove()
+
+let toStyle = containerDellEmc.querySelector(".col-md-6")
+toStyle.style.paddingTop = '40px'
 
 
 
-let div = document.createElement('div')
-div.style.display = 'flex'
-div.style.justifyContent = 'space-between'
-div.style.alignItems = 'center'
-div.style.flexWrap = 'wrap'
+let divForTwo = document.createElement("div")
+containerWithIcons.parentElement.insertBefore(divForTwo, containerWithIcons)
 
-divs.forEach(dv =>{
-
-    let divInputs = dv.parentNode.previousSibling.parentNode
-    let allInput = divInputs.querySelectorAll("input")
-    let allIds = []
-    allInput.forEach(ip =>{
-        allIds.push(ip.value)
-    })
-
-    let baseUrl = "https://www.dell.com/en-us/shop/dell-laptops/sr/laptops/dell?appliedRefinements="
-
-    allIds.forEach(id =>{
-        baseUrl += id+","
-    })
+let itensEmc = containerDellEmc.querySelectorAll(".container > div >div ");
 
 
-    let divAux = document.createElement("div")
-    
-    divAux.style.padding = '10px'
-    divAux.style.display = 'flex'
+itensEmc.forEach(it => it.classList.add("col-md-12"))
 
-    let a = document.createElement("a")
-    a.href = baseUrl
-    a.innerText = dv.innerHTML
-    divAux.appendChild(a)
-    div.appendChild(divAux);
-})
+divForTwo.appendChild(containerWithIcons)
+divForTwo.appendChild(containerDellEmc)
+divForTwo.classList.add("row")
 
-divAdjascente.parentElement.insertBefore( div, divAdjascente)
+let container = containerWithIcons.firstElementChild
+
+
+let containerRow = containerWithIcons.querySelector(".row")
+let containerRow2 = containerRow.cloneNode()
+
+containerRow2.classList.add("row2") 
+containerRow2.classList.add("mt-6") 
+let rows = Array.from(containerRow.children)
+
+rows.forEach(r => r.classList.add("col-lg-6"))
+
+let itens12 = [rows[0], rows[1]]
+
+let itens34 = [rows[2], rows[3]]
+
+containerRow.remove()
+
+    containerRow.appendChild(itens12[0])
+    containerRow.appendChild(itens12[1])
+    containerRow2.appendChild(itens34[0])
+    containerRow2.appendChild(itens34[1])
+    container.appendChild(containerRow)
+    container.appendChild(containerRow2)
+
